@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>waffle invitation</title>
+<title>einladung <3 </title>
 
 <style>
 
@@ -32,7 +32,7 @@ cursor:pointer;
 }
 
 .square:hover{
-background:#f5f5f5;
+background:#F7FFF5;
 }
 
 #content{
@@ -60,7 +60,7 @@ cursor:pointer;
 </head>
 <body>
 
-<h1>waffle birthday</h1>
+<h1>waffel party</h1>
 
 <div id="waffle">🧇</div>
 <button onclick="generate()">generate waffle</button>
@@ -68,11 +68,11 @@ cursor:pointer;
 <div class="grid">
 
 <div class="square" onclick="show('info')">
-when / why
+wann
 </div>
 
 <div class="square" onclick="show('address')">
-address
+wo
 </div>
 
 <div class="square" onclick="show('rsvp')">
@@ -95,41 +95,42 @@ let c=document.getElementById("content");
 
 if(type=="info"){
 c.innerHTML=`
-<p><b>waffle birthday</b></p>
-<p>12 april</p>
-<p>15:00</p>
-<p>come eat waffles</p>
+<p><b>lauris geburtstag</b></p>
+<p>14. märz</p>
+<p>ab 11:00</p>
+<p>komm vorbei zum waffeln essen, ich freu mich <3</p>
 `;
 }
 
 if(type=="address"){
 c.innerHTML=`
-<p>street name 12</p>
-<p>city</p>
-<button onclick="window.open('https://maps.google.com')">
-open map
+<p>rumpffsweg 11</p>
+<p>hamburg</p>
+<button onclick="window.open('https://www.google.com/maps/place/Rumpffsweg+11,+20537+Hamburg/@53.5541358,10.0519738,16z/data=!3m1!4b1!4m6!3m5!1s0x47b18ea1f163ba29:0x3be23f125ff13104!8m2!3d53.5541326!4d10.0545487!16s%2Fg%2F11c227_rh4?entry=ttu&g_ep=EgoyMDI2MDMwNS4wIKXMDSoASAFQAw%3D%3D')">
+karte öffnen
 </button>
 `;
 }
 
 if(type=="rsvp"){
 c.innerHTML=`
-<p>are you coming?</p>
-<button onclick="reply('yes')">yes</button>
-<button onclick="reply('no')">no</button>
+<p>kommst du vorbei?</p>
+<button onclick="reply('ja')">ja</button>
+<button onclick="reply('nein')">nein</button>
 <p id="answer"></p>
 `;
 }
 
 if(type=="toppings"){
 c.innerHTML=`
-<p>choose toppings</p>
+<p>wähle deine toppings</p>
 
-<label><input type="checkbox"> strawberries 🍓</label><br>
-<label><input type="checkbox"> banana 🍌</label><br>
-<label><input type="checkbox"> chocolate 🍫</label><br>
-<label><input type="checkbox"> powdered sugar ❄️</label><br>
-<label><input type="checkbox"> vegan cream 🌱</label>
+<label><input type="checkbox"> erdbeeren 🍓</label><br>
+<label><input type="checkbox"> bananen 🍌</label><br>
+<label><input type="checkbox"> nutelle 🍫</label><br>
+<label><input type="checkbox"> puderzucker ❄️</label><br>
+<label><input type="checkbox"> käse 🧀</label><br>
+<label><input type="checkbox"> apfelmus 🍎</label>
 `;
 }
 
@@ -142,7 +143,7 @@ document.getElementById("answer").innerText="thanks!";
 function generate(){
 
 let toppings=[
-"🍓","🍌","🍫","🍯","🫐","🍦"
+"🍓","🍌","🍫","🍯","🍦","🧀","🍎","🥑"
 ];
 
 let amount=Math.floor(Math.random()*3)+1;
