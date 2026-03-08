@@ -2,116 +2,160 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Dial-a-Waffle</title>
+<title>waffle invitation</title>
 
 <style>
 
 body{
-font-family: "Times New Roman", serif;
+font-family:"Times New Roman",serif;
 background:white;
 text-align:center;
-margin-top:80px;
+margin-top:60px;
 }
 
 h1{
 font-weight:normal;
 }
 
-#screen{
-border:1px solid black;
-width:200px;
-margin:20px auto;
-padding:10px;
-font-size:24px;
-letter-spacing:3px;
-}
-
-.pad{
-width:200px;
-margin:auto;
+.grid{
+width:300px;
+margin:40px auto;
 display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:6px;
+grid-template-columns:1fr 1fr;
+gap:10px;
 }
 
-button{
-padding:12px;
-font-size:18px;
+.square{
 border:1px solid black;
-background:white;
+padding:40px 10px;
 cursor:pointer;
 }
 
-button:hover{
-background:#eee;
+.square:hover{
+background:#f5f5f5;
 }
 
-.info{
+#content{
 margin-top:40px;
+max-width:400px;
+margin-left:auto;
+margin-right:auto;
 font-size:18px;
 }
 
-</style>
-</head>
+#waffle{
+font-size:40px;
+margin:20px;
+}
 
+button{
+border:1px solid black;
+background:white;
+padding:6px 10px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
 <body>
 
-<h1>Dial-a-Waffle</h1>
+<h1>waffle birthday</h1>
 
-<p>Enter the code to access the birthday invitation</p>
+<div id="waffle">🧇</div>
+<button onclick="generate()">generate waffle</button>
 
-<div id="screen"></div>
+<div class="grid">
 
-<div class="pad">
-<button onclick="add(1)">1</button>
-<button onclick="add(2)">2</button>
-<button onclick="add(3)">3</button>
-
-<button onclick="add(4)">4</button>
-<button onclick="add(5)">5</button>
-<button onclick="add(6)">6</button>
-
-<button onclick="add(7)">7</button>
-<button onclick="add(8)">8</button>
-<button onclick="add(9)">9</button>
-
-<button onclick="clearNum()">C</button>
-<button onclick="add(0)">0</button>
-<button onclick="call()">call</button>
+<div class="square" onclick="show('info')">
+when / why
 </div>
 
-<div class="info" id="result"></div>
+<div class="square" onclick="show('address')">
+address
+</div>
+
+<div class="square" onclick="show('rsvp')">
+rsvp
+</div>
+
+<div class="square" onclick="show('toppings')">
+toppings
+</div>
+
+</div>
+
+<div id="content"></div>
 
 <script>
 
-let number="";
+function show(type){
 
-function add(n){
-number += n;
-document.getElementById("screen").innerText=number;
-}
+let c=document.getElementById("content");
 
-function clearNum(){
-number="";
-document.getElementById("screen").innerText="";
-}
-
-function call(){
-
-if(number=="123"){
-document.getElementById("result").innerHTML=
-`
-<h2>🧇 Birthday Waffle Party</h2>
-<p>12 April – 15:00</p>
-<p>Come eat waffles!</p>
-<p>Location: my place</p>
+if(type=="info"){
+c.innerHTML=`
+<p><b>waffle birthday</b></p>
+<p>12 april</p>
+<p>15:00</p>
+<p>come eat waffles</p>
 `;
 }
 
-else{
-document.getElementById("result").innerHTML=
-"Number not found.";
+if(type=="address"){
+c.innerHTML=`
+<p>street name 12</p>
+<p>city</p>
+<button onclick="window.open('https://maps.google.com')">
+open map
+</button>
+`;
 }
+
+if(type=="rsvp"){
+c.innerHTML=`
+<p>are you coming?</p>
+<button onclick="reply('yes')">yes</button>
+<button onclick="reply('no')">no</button>
+<p id="answer"></p>
+`;
+}
+
+if(type=="toppings"){
+c.innerHTML=`
+<p>choose toppings</p>
+
+<label><input type="checkbox"> strawberries 🍓</label><br>
+<label><input type="checkbox"> banana 🍌</label><br>
+<label><input type="checkbox"> chocolate 🍫</label><br>
+<label><input type="checkbox"> powdered sugar ❄️</label><br>
+<label><input type="checkbox"> vegan cream 🌱</label>
+`;
+}
+
+}
+
+function reply(r){
+document.getElementById("answer").innerText="thanks!";
+}
+
+function generate(){
+
+let toppings=[
+"🍓","🍌","🍫","🍯","🫐","🍦"
+];
+
+let amount=Math.floor(Math.random()*3)+1;
+
+let waffle="🧇 ";
+
+for(let i=0;i<amount;i++){
+
+waffle+=toppings[Math.floor(Math.random()*toppings.length)]+" ";
+
+}
+
+document.getElementById("waffle").innerText=waffle;
 
 }
 
