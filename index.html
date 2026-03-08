@@ -1,77 +1,116 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Waffel Geburtstag</title>
+<meta charset="UTF-8">
+<title>Dial-a-Waffle</title>
 
 <style>
+
 body{
-  font-family: Arial;
-  text-align:center;
-  background:#fff3d6;
+font-family: "Times New Roman", serif;
+background:white;
+text-align:center;
+margin-top:80px;
 }
 
-.card{
-  background:white;
-  padding:30px;
-  margin:40px auto;
-  width:400px;
-  border-radius:20px;
+h1{
+font-weight:normal;
+}
+
+#screen{
+border:1px solid black;
+width:200px;
+margin:20px auto;
+padding:10px;
+font-size:24px;
+letter-spacing:3px;
+}
+
+.pad{
+width:200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:6px;
 }
 
 button{
-  padding:10px 20px;
-  margin:10px;
-  font-size:16px;
+padding:12px;
+font-size:18px;
+border:1px solid black;
+background:white;
+cursor:pointer;
 }
+
+button:hover{
+background:#eee;
+}
+
+.info{
+margin-top:40px;
+font-size:18px;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<h1>Dial-a-Waffle</h1>
 
-<h1>🧇 Waffel Geburtstag!</h1>
+<p>Enter the code to access the birthday invitation</p>
 
-<p>Ich werde ein Jahr älter und lade dich zum Waffeln essen ein.</p>
+<div id="screen"></div>
 
-<p><b>Datum:</b> 12. April</p>
-<p><b>Uhrzeit:</b> 15:00</p>
+<div class="pad">
+<button onclick="add(1)">1</button>
+<button onclick="add(2)">2</button>
+<button onclick="add(3)">3</button>
 
-<h2 id="countdown"></h2>
+<button onclick="add(4)">4</button>
+<button onclick="add(5)">5</button>
+<button onclick="add(6)">6</button>
 
-<h3>Kommst du?</h3>
+<button onclick="add(7)">7</button>
+<button onclick="add(8)">8</button>
+<button onclick="add(9)">9</button>
 
-<button onclick="answer('yes')">Ja 😋</button>
-<button onclick="answer('no')">Leider nicht 😢</button>
-
-<p id="response"></p>
-
+<button onclick="clearNum()">C</button>
+<button onclick="add(0)">0</button>
+<button onclick="call()">call</button>
 </div>
+
+<div class="info" id="result"></div>
 
 <script>
 
-let birthday = new Date("Apr 12, 2026 15:00:00").getTime();
+let number="";
 
-setInterval(function(){
-
-let now = new Date().getTime();
-let diff = birthday - now;
-
-let days = Math.floor(diff/(1000*60*60*24));
-
-document.getElementById("countdown").innerHTML =
-"Nur noch " + days + " Tage bis zu den Waffeln!";
-
-},1000);
-
-function answer(a){
-
-if(a=="yes"){
-document.getElementById("response").innerHTML="Yay! 🧇";
+function add(n){
+number += n;
+document.getElementById("screen").innerText=number;
 }
 
-if(a=="no"){
-document.getElementById("response").innerHTML="Schade 😢";
+function clearNum(){
+number="";
+document.getElementById("screen").innerText="";
+}
+
+function call(){
+
+if(number=="123"){
+document.getElementById("result").innerHTML=
+`
+<h2>🧇 Birthday Waffle Party</h2>
+<p>12 April – 15:00</p>
+<p>Come eat waffles!</p>
+<p>Location: my place</p>
+`;
+}
+
+else{
+document.getElementById("result").innerHTML=
+"Number not found.";
 }
 
 }
